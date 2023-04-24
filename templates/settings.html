@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block title %}Couch Potato{% endblock %}
+{% block content %}
+<form action="/settings" method="POST">
+
+    <div class="border border-3 rounded mx-auto my-3 box">
+
+        <div class="row  mx-5 mt-2 mb-1">
+            <div class="col">
+                <p class="text-center my-auto justify-content-cente"> Morning Settings </p>
+            </div>
+        </div>
+
+        <div class="row mx-5 mb-1 border">
+            <div class="col ">
+                <p class="text-center my-auto justify-content-cente"> Target Temp </p>
+                <input name="MorningTargetTemp" type="range" value="{{config_dict['MorningTargetTemp']}}" min="5"
+                    max="25" oninput="this.nextElementSibling.value = this.value">
+                <output class=""> {{config_dict["MorningTargetTemp"]}} </output>
+            </div>
+        </div>
+
+        <div class="row mx-5 mb-1 border">
+            <div class="col ">
+                <p class="text-center my-auto justify-content-cente"> Start Time AM </p>
+                <input name="MorningStartTime" type="range" value="{{config_dict['MorningStartTime']}}" min="1" max="8"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output class=""> {{config_dict["MorningStartTime"]}}</output>
+            </div>
+        </div>
+
+        <div class="row mx-5 mb-1 border pb-3">
+            <div class="col ">
+                <p class="text-center my-auto justify-content-cente"> End Time AM </p>
+                <input name="MorningEndTime" type="range" value="{{config_dict['MorningEndTime']}}" min="8" max="11"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output class=""> {{config_dict["MorningEndTime"]}}</output>
+            </div>
+        </div>
+    </div>
+
+    <div class="border border-3 rounded mx-auto my-3 box">
+
+        <div class="row  mx-5 mt-2 mb-1">
+            <div class="col">
+                <p class="text-center my-auto justify-content-cente"> Evening Settings </p>
+            </div>
+        </div>
+
+        <div class="row mx-5 mb-1 border">
+            <div class="col ">
+                <p class="text-center my-auto justify-content-cente"> Target Temp </p>
+                <input name="EveningTargetTemp" type="range" value="{{config_dict['EveningTargetTemp']}}" min="5"
+                    max="25" oninput="this.nextElementSibling.value = this.value">
+                <output class=""> {{config_dict["EveningTargetTemp"]}} </output>
+            </div>
+        </div>
+
+        <div class="row mx-5 mb-1 border">
+            <div class="col ">
+                <p class="text-center my-auto justify-content-cente"> Start Time PM </p>
+                <input name="EveningStartTime" type="range" value="{{config_dict['EveningStartTime']}}" min="1" max="6"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output class=""> {{config_dict["EveningStartTime"]}}</output>
+            </div>
+        </div>
+
+        <div class="row mx-5 mb-1 border pb-3">
+            <div class="col ">
+                <p class="text-center my-auto justify-content-cente"> End Time PM </p>
+                <input name="EveningEndTime" type="range" value="{{config_dict['EveningEndTime']}}" min="7" max="11"
+                    oninput="this.nextElementSibling.value = this.value">
+                <output class=""> {{config_dict["EveningEndTime"]}}</output>
+            </div>
+        </div>
+    </div>
+
+    <div class="border border-3 rounded mx-auto my-3 box">
+
+        <div class="row mx-5 mb-1 border mt-2 mb-2">
+            <div class="col ">
+                <p class="text-center my-auto justify-content-cente"> Min Temp</p>
+                <input name="MinTempThreshold" type="range" value="{{config_dict['MinTempThreshold']}}" min="5"
+                    max="10" oninput="this.nextElementSibling.value = this.value">
+                <output class=""> {{config_dict["MinTempThreshold"]}} </output>
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-auto my-3 box">
+        <div class="col text-center">
+            <button type="submit" class="btn hot btn-lg mb-3">Update Settings</button>
+        </div>
+    </div>
+
+
+</form>
+{% endblock %}

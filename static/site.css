@@ -1,0 +1,33 @@
+.rounded {
+    border-radius: 2rem !important;         
+    width: 67%;
+}
+.box {
+    width: 300px;
+}
+p, h1, .btn {
+    font-family: 'Orbitron', sans-serif;
+}
+.btn {
+    font-family: 'Dancing Script', cursive;
+    width: 200px;
+}
+.warm{
+    background-color: lightsalmon;
+}
+.hot{
+    background-color: red;  
+}
+.cool{
+    background-color: lavender;  
+}
+.cold{
+    background-color: lightblue;  
+}
+a {
+    text-decoration: none;           
+}
+output{
+    font-size: 1.5rem;
+    margin-left: 8px;
+}
