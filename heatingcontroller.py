@@ -2,8 +2,12 @@
 from config import *  
 from time import sleep
 from datetime import datetime
+from grove.gpio import GPIO
+import pymysql
 from groverelay import GroveRelay
+import logging
 import helpers
+
 
 def main():
    

@@ -4,18 +4,18 @@ from config import *
 from time import sleep
 import seeed_dht
 from datetime import datetime
-from grove.gpio import GPIO
-from groverelay import GroveRelay
+#from grove.gpio import GPIO
+#from groverelay import GroveRelay
 import helpers
 
 def main():
     sensor = seeed_dht.DHT("11", 12)
-    relay = GroveRelay(5)
+#    relay = GroveRelay(5)
 
     conn, c = helpers.create_db_cursor()
       
     while True:
-        sleep(1)
+        sleep(60)
         now = datetime.now()
         humidity, temp = sensor.read()
         #humidity = 20 #temporarily hard code values for testing
