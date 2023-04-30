@@ -1,11 +1,34 @@
 from flask import Flask, render_template, request, redirect
+import datetime 
 import helpers
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    """Renders the home page."""
+    if ( datetime.now().month > 4 and  datetime.now().month < 11 ):
+        return redirect('/winter')  
+    else:
+        return redirect('/summer')
+
+@app.route("/summer")
+def summer():
+        config_dict = helpers.get_config()
+
+        temp = config_dict["temp"]    
+        min = config_dict["mintemp"]
+        humidity = config_dict["humidity"]
+
+        if (config_dict['heating']=="T"):
+            border_heating = "border-danger"
+        
+        if (config_dict['watering']=="T" ) :
+            border_watering = "border-success"
+
+        return render_template('winter.html', **locals())
+
+@app.route("/winter")
+def winter():
     config_dict = helpers.get_config()
 
     temp = config_dict["temp"]    
@@ -18,7 +41,7 @@ def home():
     if (config_dict['watering']=="T" ) :
         border_watering = "border-success"
 
-    return render_template('home.html', **locals())
+    return render_template('winter.html', **locals())
 
 @app.route("/settings")
 def settings():
