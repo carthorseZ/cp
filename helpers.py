@@ -227,8 +227,40 @@ def commit_and_close_db_connection(conn, cursor):
     cursor.close()
     conn.close()
 
+def record_outsideTemp():
+
+    try:        
+        #Setup chrome driver to connect to the site
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--no-sandbox')
+        chrome_options.add_argument('--disable-dev-shm-usage')
+        driver = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver", options=chrome_options)
+        url = "https://www.wunderground.com/dashboard/pws/IARROW11"
+        
+        #connect to webpage download and format the content
+        driver.get(url)
+        content = driver.page_source
+        soup = BeautifulSoup(content, "html.parser")
+
+        #find all the lines which contain the data we want
+        #p_lines = soup.findAll('p', attrs={'class': 'wu-value wu-value-to'})
+        tempHTML = soup.find(class_ ='wu-value wu-value-to')
+        outsideTemp = int((int(tempHTML.text) -32) * 5/9)
+
+    except Exception as e:
+        logging.CRITICAL(f"Error getting outside temp: {e}")
+        outsideTemp = -99
+
+    finally:
+        conn, c = create_db_cursor()
+        c.execute(f"UPDATE config set value='{outsideTemp}' where id='outsideTemp';")
+        commit_and_close_db_connection(conn, c)
+
+    return outsideTemp
+
 #test functions
-#print(get_forecast())
+#print(record_outsideTemp())
 #open_valve()
 #measure_moisture()
 #record_forecast()

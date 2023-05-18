@@ -5,7 +5,7 @@
 .box {
     width: 300px;
 }
-p, h1, .btn {
+p, h1, h4, .btn {
     font-family: 'Orbitron', sans-serif;
 }
 .btn {

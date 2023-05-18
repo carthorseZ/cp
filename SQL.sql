@@ -1,0 +1,1 @@
+INSERT INTO config VALUES ('outsideTemp', '10')

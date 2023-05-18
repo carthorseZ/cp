@@ -19,7 +19,7 @@ def main():
     while True:
         now = datetime.now()
         log_time = datetime.now().strftime("%H.%M.%S")
-
+ 
         c.execute(f"SELECT value from config where id='temp';")
         data = c.fetchone()
         temp = int(data[0])

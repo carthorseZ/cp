@@ -28,31 +28,16 @@
             </form>
         </div>
 
-        <div class="row mx-5 mt-2 my-2">
+        <div class="row mx-5 mt-2 mb-3 my-2">
             <div class="col border">
                 <p class="text-center my-auto justify-content-cente">{{humidity}}% Humidity</p>
             </div>
         </div>
-        
-        <div class="row border border-3 rounded mx-auto my-3 ">
-            <div class="col-100 text-center">
-                    <a href="{{ url_for('settings') }}" class="">Settings</a> 
-            </div>
-        </div>
 
     </div>
 
-    <div class="border border-3 {{border_watering}} rounded mx-auto my-3 box">
-        <div class="col text-center">
-            <form action="/process" method="POST">
-                <input type="submit" name="button" class="btn btn-primary btn-lg mt-3 mb-1" value="Water Vegs"> <br>
-                <input type="submit" name="button" class="btn btn-primary btn-lg mb-3" value="Water Berries"> <br>
-                <input type="submit" name="button" class="btn cool btn-lg mb-1" value="Skip One"> <br>
-                <input type="submit" name="button" class="btn cold btn-lg mb-3" value="Skip Two">     
-            </form>       
-            </form>
-        </div>
+    <div class="border rounded mx-auto my-3 box ">
+        <h4 class="text-center my-3"><a href="{{ url_for('settings') }}">Settings</a></h1>
     </div>
-
 
 {% endblock %}    

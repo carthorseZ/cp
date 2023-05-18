@@ -1,12 +1,24 @@
 from flask import Flask, render_template, request, redirect
-import datetime 
+from datetime import datetime
 import helpers
+import logging
+from config import *    #import configuration variables
+
+#setup logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler(f'{LOGDIR}{datetime.date(datetime.now())}.txt'),
+        logging.StreamHandler()
+    ]
+)
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    if ( datetime.now().month > 4 and  datetime.now().month < 11 ):
+    if ( datetime.now().month > 3 and  datetime.now().month < 11 ):
         return redirect('/winter')  
     else:
         return redirect('/summer')
@@ -16,6 +28,7 @@ def summer():
         config_dict = helpers.get_config()
 
         temp = config_dict["temp"]    
+        outsideTemp = config_dict["outsideTemp"]    
         min = config_dict["mintemp"]
         humidity = config_dict["humidity"]
 
@@ -25,13 +38,14 @@ def summer():
         if (config_dict['watering']=="T" ) :
             border_watering = "border-success"
 
-        return render_template('winter.html', **locals())
+        return render_template('summer.html', **locals())
 
 @app.route("/winter")
 def winter():
     config_dict = helpers.get_config()
 
     temp = config_dict["temp"]    
+    outsideTemp = config_dict["outsideTemp"]    
     min = config_dict["mintemp"]
     humidity = config_dict["humidity"]
 
