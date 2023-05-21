@@ -14,4 +14,4 @@ RAIN_FORECAST_48HRS_MIN = 5.0
 WATERING_TIME = 10
 DEGREE_SIGN = u"\N{DEGREE SIGN}"
 MIN_RUN_TIME = 60*10
-LOGDIR= "C:\Projects\couchpotato\logs\log"
+LOGDIR= "/home/pi/cp/logs/log"

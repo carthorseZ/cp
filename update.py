@@ -6,14 +6,14 @@ from datetime import datetime
 import random
 import helpers
 
-#import seeed_dht
-#from grove.gpio import GPIO
-#from groverelay import GroveRelay
+import seeed_dht
+from grove.gpio import GPIO
+from groverelay import GroveRelay
 
 def main():
     sleep(5)
-    #sensor = seeed_dht.DHT("11", 12)
-#    relay = GroveRelay(5)
+    sensor = seeed_dht.DHT("11", 12)
+    relay = GroveRelay(5)
 
     conn, c = helpers.create_db_cursor()
 
@@ -22,13 +22,13 @@ def main():
     while True:
         sleep(60)
         now = datetime.now()
-        humidity, temp =  10,10 #sensor.read()
+        humidity, temp =  sensor.read()
 
         config_dict = helpers.get_config()
         MorningStartTime = int(config_dict["MorningStartTime"])
         MorningEndTime = int(config_dict["MorningEndTime"])
-        EveningStartTime = int(config_dict["EveningStartTime"])
-        EveningEndTime = int(config_dict["EveningEndTime"])
+        EveningStartTime = int(config_dict["EveningStartTime"])+ 12
+        EveningEndTime = int(config_dict["EveningEndTime"])+ 12
         MorningTargetTemp = int(config_dict["MorningTargetTemp"])
         EveningTargetTemp = int(config_dict["EveningTargetTemp"])
         MinTempThreshold = int(config_dict["MinTempThreshold"])

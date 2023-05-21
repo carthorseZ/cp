@@ -1,1 +1,3 @@
-INSERT INTO config VALUES ('Temp', '10')
+--INSERT INTO config VALUES ('Temp', '10')
+
+select * from config

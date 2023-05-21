@@ -41,7 +41,6 @@ c.execute("INSERT INTO config VALUES ('EveningEndTime', '21')")
 c.execute("INSERT INTO config VALUES ('MorningTargetTemp', '15')")
 c.execute("INSERT INTO config VALUES ('EveningTargetTemp', '18')")
 c.execute("INSERT INTO config VALUES ('MinTempThreshold', '10')")
-c.execute("INSERT INTO config VALUES ('Temp', '10')")
 
 helpers.commit_and_close_db_connection(conn, c)
 

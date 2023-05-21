@@ -8,7 +8,6 @@ from groverelay import GroveRelay
 import logging
 import helpers
 
-
 def main():
    
     # Connect to the database.

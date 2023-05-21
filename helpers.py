@@ -245,11 +245,14 @@ def record_outsideTemp():
 
         #find all the lines which contain the data we want
         #p_lines = soup.findAll('p', attrs={'class': 'wu-value wu-value-to'})
-        tempHTML = soup.find(class_ ='wu-value wu-value-to')
-        outsideTemp = int((int(tempHTML.text) -32) * 5/9)
+        tempHTML = soup.find(class_ ='current-temp')
+        tempint = int(tempHTML.text.strip()[:-1]) #removes the leading and trailing spaces and degree symbol
+ 
+        outsideTemp = int((tempint -32) * 5/9)
+
 
     except Exception as e:
-        logging.CRITICAL(f"Error getting outside temp: {e}")
+        logging.critical(f"Error getting outside temp: {e}")
         outsideTemp = -99
 
     finally:
@@ -264,3 +267,4 @@ def record_outsideTemp():
 #open_valve()
 #measure_moisture()
 #record_forecast()
+#record_outsideTemp()

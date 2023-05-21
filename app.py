@@ -3,6 +3,9 @@ from datetime import datetime
 import helpers
 import logging
 from config import *    #import configuration variables
+#from dotenv import load_dotenv
+
+#load_dotenv()
 
 #setup logging
 logging.basicConfig(
@@ -15,6 +18,9 @@ logging.basicConfig(
 )
 
 app = Flask(__name__)
+app.config['TESTING'] = True
+app.config['ENV'] = 'development'
+app.config['DEBUG'] = True
 
 @app.route("/")
 def home():
